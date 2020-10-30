@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "pry-rails"
+makes = [{make: "Hyundai", model: "Tucson"}, {make: "Volvo", model: "XC40"}, {make: "Volkwagon", model: "Polo"}, {make: "Volkswagon", model: "Golf"}, {make: "Volvo", model: "XC60"}]
+
+makes.each do |make|
+  car_make = Make.create(name: make[:make])
+  CarModel.create(name: make[:model], make_id: car_make.id)
+end
