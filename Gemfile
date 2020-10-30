@@ -12,6 +12,8 @@ gem "autoprefixer-rails"
 
 gem "annotate"
 gem "bootsnap", require: false
+gem "factory_bot_rails"
+gem "ffaker"
 gem "honeybadger"
 gem "pg"
 gem "puma"

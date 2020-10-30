@@ -1,7 +1,18 @@
-require "pry-rails"
-makes = [{make: "Hyundai", model: "Tucson"}, {make: "Volvo", model: "XC40"}, {make: "Volkwagon", model: "Polo"}, {make: "Volkswagon", model: "Golf"}, {make: "Volvo", model: "XC60"}]
+require "factory_bot"
+include FactoryBot::Syntax::Methods
+
+makes = 5.times.map do
+  create(:make)
+end
 
 makes.each do |make|
-  car_make = Make.create(name: make[:make])
-  CarModel.create(name: make[:model], make_id: car_make.id)
+  models = 5.times.map do
+    create(:car_model, make: make)
+  end
+  models.each do |model|
+    5.times do
+      create(:car, car_model: model)
+    end
+  end
 end
+

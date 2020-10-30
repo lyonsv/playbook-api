@@ -16,8 +16,12 @@
 #
 #  fk_rails_...  (make_id => makes.id)
 #
-class CarModel < ApplicationRecord
-  has_many :cars, dependent: :destroy
-  belongs_to :make
-  validates :name, presence: true, uniqueness: true
+FactoryBot.define do
+  sequence :model_name do |n|
+    "#{FFaker::Vehicle.model}-#{n}"
+  end
+
+  factory :car_model do
+    name { generate(:model_name) }
+  end
 end
